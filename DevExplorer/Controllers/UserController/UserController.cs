@@ -23,6 +23,38 @@ namespace DevExplorerAPI.DevExplorer.Controllers.UserController
 
 
         [AllowAnonymous]
+        [HttpGet, Route("user-list")]
+        public async Task<IActionResult> GetUsersAsync()
+        {
+            try
+            {
+                IEnumerable<UserModel> users = await _userService.GetUsersAsync();
+                return Ok(users);
+            }
+            catch (System.Exception)
+            {
+
+                throw new Exception();
+            }
+        }
+
+        [AllowAnonymous]
+        [HttpGet, Route("{CPF}")]
+        public async Task<IActionResult> GetUserAsync(string CPF)
+        {
+            try
+            {
+                UserModel user = await _userService.GetUserAsync(CPF);
+                return Ok(user);
+            }
+            catch (System.Exception)
+            {
+
+                throw new Exception();
+            }
+        }
+
+        [AllowAnonymous]
         [HttpPost, Route("create")]
         public async Task<IActionResult> AddUserAsync([FromBody] UserModel user)
         {
@@ -48,13 +80,47 @@ namespace DevExplorerAPI.DevExplorer.Controllers.UserController
         }
 
         [AllowAnonymous]
-        [HttpGet, Route("user-list")]
-        public async Task<IActionResult> GetUsersAsync()
+        [HttpPut, Route("update-user")]
+        public async Task<IActionResult> UpdateUserAsync([FromBody] UserModel user)
         {
             try
             {
-                IEnumerable<UserModel> users = await _userService.GetUsersAsync();
-                return Ok(users);
+                bool userUpdated = await _userService.UpdateUserAsync(user);
+
+                if (userUpdated)
+                {
+                    return Ok("Usuario atualizado com sucesso!");
+                }
+                else
+                {
+                    throw new Exception("É necessario preencher os campos obrigatórios.");
+                }
+
+            }
+            catch (System.Exception)
+            {
+
+                throw new Exception();
+            }
+        }
+
+        [AllowAnonymous]
+        [HttpPut, Route("delete-user/{CPF}")]
+        public async Task<IActionResult> DeleteUserAsync(string CPF)
+        {
+            try
+            {
+                UserModel user = await _userService.DeleteUserAsync(CPF);
+
+                if (user != null)
+                {
+                    return Ok($"Usuario {user.Name} deletado com sucesso!");
+                }
+                else
+                {
+                    throw new Exception("É necessario preencher os campos obrigatórios.");
+                }
+
             }
             catch (System.Exception)
             {

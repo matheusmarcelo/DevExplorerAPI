@@ -13,7 +13,7 @@ namespace DevExplorerAPI.DevExplorer.Models.User
         public int? Age { get; set; }
         public string Cpf { get; set; }
         public string Email { get; set; }
-        public string Password { get; set; }
+        public string? Password { get; set; }
         public string? CelPhone { get; set; }
         public string? DDD { get; set; }
         public string? DDI { get; set; }
@@ -24,8 +24,8 @@ namespace DevExplorerAPI.DevExplorer.Models.User
         public string? City { get; set; }
         public string? Nacionality { get; set; }
         public string? Status_account { get; set; }
-        public DateTime Date_account { get; set; }
-        public DateTime Date_updated_account { get; set; }
+        public DateTime Date_account { get; set; } = DateTime.Now;
+        public DateTime Date_updated_account { get; set; } = DateTime.Now;
         public List<TaskModel>? Tasks { get; set; }
     }
 }

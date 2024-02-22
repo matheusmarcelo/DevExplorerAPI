@@ -72,3 +72,4 @@ c:\ProjetosProgramação\APIs com ASP.NET\DevExplorerAPI\bin\Debug\net8.0\runtim
 c:\ProjetosProgramação\APIs com ASP.NET\DevExplorerAPI\bin\Debug\net8.0\runtimes\win\lib\net6.0\System.Runtime.Caching.dll
 c:\ProjetosProgramação\APIs com ASP.NET\DevExplorerAPI\bin\Debug\net8.0\runtimes\win\lib\net6.0\System.Security.Cryptography.ProtectedData.dll
 c:\ProjetosProgramação\APIs com ASP.NET\DevExplorerAPI\bin\Debug\net8.0\runtimes\win\lib\net6.0\System.Windows.Extensions.dll
+c:\ProjetosProgramação\APIs com ASP.NET\DevExplorerAPI\obj\Debug\net8.0\DevExplorerAPI.sourcelink.json

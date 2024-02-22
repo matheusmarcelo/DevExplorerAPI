@@ -9,8 +9,9 @@ namespace DevExplorerAPI.DevExplorer.Interfaces.IUser
     public interface IUserRepository
     {
         Task<IEnumerable<UserModel>> GetUsersAsync();
-        Task<UserModel> GetUserAsync(int Id);
+        Task<UserModel> GetUserAsync(string CPF);
         Task<bool> AddUserAsync(UserModel user);
         Task<bool> UpdateUserAsync(UserModel user);
+        Task<UserModel> DeleteUserAsync(string CPF);
     }
 }

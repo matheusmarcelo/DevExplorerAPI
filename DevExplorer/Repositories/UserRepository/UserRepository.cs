@@ -27,6 +27,7 @@ namespace DevExplorerAPI.DevExplorer.Repositories.UserRepository
 
         public async Task<IEnumerable<UserModel>> GetUsersAsync()
         {
+            /* Descomentar quando já tiver Tasks e Steps incluidos no banco */
             // string query = @"select * from users t1 left join Tasks t2 on t2.UserId = t1.Id
             // left join Steps t3 on t3.TaskId = t2.Id where t1.Id = t1.Id";
 
@@ -46,9 +47,15 @@ namespace DevExplorerAPI.DevExplorer.Repositories.UserRepository
             return await connection.QueryAsync<UserModel>("SELECT * FROM Users");
         }
 
-        public Task<UserModel> GetUserAsync(int Id)
+        public async Task<UserModel> GetUserAsync(string CPF)
         {
-            throw new NotImplementedException();
+            string query = @"SELECT * FROM Users WHERE Cpf = @CPF";
+            UserModel user = await connection.QuerySingleOrDefaultAsync<UserModel>(query, new { CPF = CPF });
+
+            if (user != null)
+                return user;
+
+            throw new Exception("Não existe usuario com este CPF");
         }
 
         public async Task<bool> AddUserAsync(UserModel user)
@@ -77,8 +84,6 @@ namespace DevExplorerAPI.DevExplorer.Repositories.UserRepository
                     City = user.City,
                     Nationality = user.Nacionality,
                     Status_account = 'A',
-                    Date_account = DateTime.Now,
-                    Date_updated_account = DateTime.Now
                 }
             );
 
@@ -93,9 +98,75 @@ namespace DevExplorerAPI.DevExplorer.Repositories.UserRepository
             }
         }
 
-        public Task<bool> UpdateUserAsync(UserModel user)
+        public async Task<bool> UpdateUserAsync(UserModel user)
         {
-            throw new NotImplementedException();
+            string query = @"UPDATE Users SET 
+                                Name = @Name,
+                                Age = @Age,
+                                Cpf = @Cpf,
+                                Email = @Email,
+                                CelPhone = @CelPhone,
+                                DDD = @DDD,
+                                DDI = @DDI,
+                                Address = @Address,
+                                House_number = @House_number,
+                                Zip_code = @Zip_code,
+                                State = @State,
+                                City = @City,
+                                Nationality = @Nationality,
+                                Date_updated_account = @Date_updated_account
+                                WHERE Cpf = @Cpf";
+            if (user != null)
+            {
+                var userUpdated = await connection.QueryAsync<UserModel>(query,
+                new
+                {
+                    Name = user.Name,
+                    Age = user.Age,
+                    Cpf = user.Cpf,
+                    Email = user.Email,
+                    Password = user.Password,
+                    CelPhone = user.CelPhone,
+                    DDD = user.DDD,
+                    DDI = user.DDI,
+                    Address = user.Address,
+                    House_number = user.House_number,
+                    @Zip_code = user.Zip_code,
+                    State = user.State,
+                    City = user.City,
+                    Nationality = user.Nacionality,
+                    Date_updated_account = DateTime.Now
+                }
+                );
+
+                if (userUpdated != null)
+                {
+                    return true;
+                }
+
+
+            }
+
+            return false;
+        }
+
+        public async Task<UserModel> DeleteUserAsync(string CPF)
+        {
+            string query = @"SELECT Name FROM Users WHERE Cpf = @CPF";
+
+            string queryDelete = @"UPDATE Users SET Status_account = 'E' WHERE Cpf = @CPF";
+
+            await connection.ExecuteAsync(queryDelete, new { CPF = CPF });
+
+            UserModel user = await connection.QuerySingleAsync<UserModel>(query, new { CPF = CPF });
+
+            if (user != null)
+            {
+                return user;
+            }
+
+
+            return null;
         }
     }
 }

@@ -9,6 +9,9 @@ namespace DevExplorerAPI.DevExplorer.Interfaces.IUserService
     public interface IUserService
     {
         Task<IEnumerable<UserModel>> GetUsersAsync();
+        Task<UserModel> GetUserAsync(string CPF);
         Task<bool> AddUserAsync(UserModel user);
+        Task<bool> UpdateUserAsync(UserModel user);
+        Task<UserModel> DeleteUserAsync(string CPF);
     }
 }

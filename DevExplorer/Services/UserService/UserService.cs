@@ -19,6 +19,30 @@ namespace DevExplorerAPI.DevExplorer.Services.UserService
             _userRepository = userRepository;
         }
 
+        public async Task<UserModel> GetUserAsync(string CPF)
+        {
+            try
+            {
+                UserModel user = await _userRepository.GetUserAsync(CPF);
+                return user;
+            }
+            catch (Exception)
+            {
+                throw new Exception();
+            }
+        }
+
+        public async Task<IEnumerable<UserModel>> GetUsersAsync()
+        {
+            IEnumerable<UserModel> users = await _userRepository.GetUsersAsync();
+
+            if (users.Any())
+            {
+                return users;
+            }
+
+            throw new Exception("Não existe usuarios para listar");
+        }
 
         public async Task<bool> AddUserAsync(UserModel user)
         {
@@ -36,16 +60,32 @@ namespace DevExplorerAPI.DevExplorer.Services.UserService
 
         }
 
-        public async Task<IEnumerable<UserModel>> GetUsersAsync()
+        public async Task<bool> UpdateUserAsync(UserModel user)
         {
-            IEnumerable<UserModel> users = await _userRepository.GetUsersAsync();
-
-            if (users.Count() > 0)
+            try
             {
-                return users;
-            }
+                bool userUpdated = await _userRepository.UpdateUserAsync(user);
 
-            throw new Exception("Não existe usuarios para listar");
+                return userUpdated;
+
+            }
+            catch (Exception)
+            {
+                throw new Exception();
+            }
+        }
+
+        public async Task<UserModel> DeleteUserAsync(string CPF)
+        {
+            try
+            {
+                UserModel user = await _userRepository.DeleteUserAsync(CPF);
+                return user;
+            }
+            catch (Exception)
+            {
+                throw new Exception();
+            }
         }
     }
 }
