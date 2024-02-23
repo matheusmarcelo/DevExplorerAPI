@@ -22,7 +22,7 @@ namespace DevExplorerAPI.DevExplorer.Models.User
         public string? Zip_code { get; set; }
         public string? State { get; set; }
         public string? City { get; set; }
-        public string? Nacionality { get; set; }
+        public string? Nat { get; set; }
         public string? Status_account { get; set; }
         public DateTime Date_account { get; set; } = DateTime.Now;
         public DateTime Date_updated_account { get; set; } = DateTime.Now;

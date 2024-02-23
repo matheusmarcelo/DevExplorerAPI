@@ -62,8 +62,8 @@ namespace DevExplorerAPI.DevExplorer.Repositories.UserRepository
         {
             IDbConnection conn = connection;
             string query = @"
-            INSERT INTO Users (Name, Age, Cpf, Email, Password, CelPhone, DDD, DDI, Address, House_number, Zip_code, State, City, Nationality, Status_account, Date_account, Date_updated_account)
-            VALUES (@Name, @Age, @Cpf, @Email, @Password, @CelPhone, @DDD, @DDI, @Address, @House_number, @Zip_code, @State, @City, @Nationality, @Status_account, @Date_account, @Date_updated_account)";
+            INSERT INTO Users (Name, Age, Cpf, Email, Password, CelPhone, DDD, DDI, Address, House_number, Zip_code, State, City, Nat, Status_account, Date_account, Date_updated_account)
+            VALUES (@Name, @Age, @Cpf, @Email, @Password, @CelPhone, @DDD, @DDI, @Address, @House_number, @Zip_code, @State, @City, @Nat, @Status_account, @Date_account, @Date_updated_account)";
 
             var returnQuery = await conn.QueryAsync<UserModel>(
                 query,
@@ -82,7 +82,7 @@ namespace DevExplorerAPI.DevExplorer.Repositories.UserRepository
                     @Zip_code = user.Zip_code,
                     State = user.State,
                     City = user.City,
-                    Nationality = user.Nacionality,
+                    Nat = user.Nat,
                     Status_account = 'A',
                 }
             );
@@ -113,7 +113,7 @@ namespace DevExplorerAPI.DevExplorer.Repositories.UserRepository
                                 Zip_code = @Zip_code,
                                 State = @State,
                                 City = @City,
-                                Nationality = @Nationality,
+                                Nat = @Nat,
                                 Date_updated_account = @Date_updated_account
                                 WHERE Cpf = @Cpf";
             if (user != null)
@@ -134,7 +134,7 @@ namespace DevExplorerAPI.DevExplorer.Repositories.UserRepository
                     @Zip_code = user.Zip_code,
                     State = user.State,
                     City = user.City,
-                    Nationality = user.Nacionality,
+                    Nat = user.Nat,
                     Date_updated_account = DateTime.Now
                 }
                 );
