@@ -60,6 +60,7 @@ namespace DevExplorerAPI.DevExplorer.Controllers.UserController
         {
             try
             {
+
                 bool userCreated = await _userService.AddUserAsync(user);
 
                 if (userCreated)
@@ -68,7 +69,7 @@ namespace DevExplorerAPI.DevExplorer.Controllers.UserController
                 }
                 else
                 {
-                    throw new Exception("Parece que houve um erro ao criar o usuario :(");
+                    return BadRequest("Não foi possivel cadastrar o usuario.");
                 }
 
             }

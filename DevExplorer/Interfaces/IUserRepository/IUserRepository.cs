@@ -8,6 +8,7 @@ namespace DevExplorerAPI.DevExplorer.Interfaces.IUser
 {
     public interface IUserRepository
     {
+        Task<bool> UserExistsAsync(string email);
         Task<IEnumerable<UserModel>> GetUsersAsync();
         Task<UserModel> GetUserAsync(string CPF);
         Task<bool> AddUserAsync(UserModel user);

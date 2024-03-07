@@ -25,6 +25,19 @@ namespace DevExplorerAPI.DevExplorer.Repositories.UserRepository
             connection = _dapperContext.CreateConnection();
         }
 
+        public async Task<bool> UserExistsAsync(string email)
+        {
+            string query = @"SELECT * FROM Users Where Email = @Email";
+            var userExists = await connection.QueryFirstOrDefaultAsync(query, new { Email = email });
+
+            if (userExists == null)
+            {
+                return false;
+            }
+
+            return true;
+        }
+
         public async Task<IEnumerable<UserModel>> GetUsersAsync()
         {
             /* Descomentar quando já tiver Tasks e Steps incluidos no banco */
@@ -61,9 +74,17 @@ namespace DevExplorerAPI.DevExplorer.Repositories.UserRepository
         public async Task<bool> AddUserAsync(UserModel user)
         {
             IDbConnection conn = connection;
+            var userExists = UserExistsAsync(user.Email).Result;
+
+            if (userExists)
+            {
+                return false;
+            }
+
+
             string query = @"
-            INSERT INTO Users (Name, Age, Cpf, Email, Password, CelPhone, DDD, DDI, Address, House_number, Zip_code, State, City, Nat, Status_account, Date_account, Date_updated_account)
-            VALUES (@Name, @Age, @Cpf, @Email, @Password, @CelPhone, @DDD, @DDI, @Address, @House_number, @Zip_code, @State, @City, @Nat, @Status_account, @Date_account, @Date_updated_account)";
+            INSERT INTO Users (Name, Age, Cpf, Email, BirthDay, Password, CelPhone, DDD, DDI, Address, House_number, Zip_code, State, City, Nat, Status_account, Date_account, Date_updated_account)
+            VALUES (@Name, @Age, @Cpf, @Email, @BirthDay, @Password, @CelPhone, @DDD, @DDI, @Address, @House_number, @Zip_code, @State, @City, @Nat, @Status_account, @Date_account, @Date_updated_account)";
 
             var returnQuery = await conn.QueryAsync<UserModel>(
                 query,
@@ -73,6 +94,7 @@ namespace DevExplorerAPI.DevExplorer.Repositories.UserRepository
                     Age = user.Age,
                     Cpf = user.Cpf,
                     Email = user.Email,
+                    BirthDay = user.BirthDay,
                     Password = user.Password,
                     CelPhone = user.CelPhone,
                     DDD = user.DDD,
@@ -105,6 +127,7 @@ namespace DevExplorerAPI.DevExplorer.Repositories.UserRepository
                                 Age = @Age,
                                 Cpf = @Cpf,
                                 Email = @Email,
+                                BirthDay = @BirthDay,
                                 CelPhone = @CelPhone,
                                 DDD = @DDD,
                                 DDI = @DDI,
@@ -125,6 +148,7 @@ namespace DevExplorerAPI.DevExplorer.Repositories.UserRepository
                     Age = user.Age,
                     Cpf = user.Cpf,
                     Email = user.Email,
+                    BirthDay = user.BirthDay,
                     Password = user.Password,
                     CelPhone = user.CelPhone,
                     DDD = user.DDD,

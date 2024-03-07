@@ -8,6 +8,9 @@ using DevExplorerAPI.DevExplorer.Models.DapperContext;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.IdentityModel.Tokens;
 using System.Text;
+using DevExplorerAPI.DevExplorer.Interfaces.IAuth;
+using DevExplorerAPI.DevExplorer.Services.AuthService;
+using DevExplorerAPI.DevExplorer.Repositories.AuthRepository;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -19,6 +22,8 @@ builder.Services.AddSwaggerGen();
 builder.Services.AddSingleton<DapperContext>();
 builder.Services.AddScoped<IUserRepository, UserRepository>();
 builder.Services.AddScoped<IUserService, UserService>();
+builder.Services.AddScoped<IAuthenticateRepository, AuthenticateRepository>();
+builder.Services.AddScoped<IAuthenticateService, AuthenticateService>();
 
 builder.Services.AddAuthentication(opt =>
     {
