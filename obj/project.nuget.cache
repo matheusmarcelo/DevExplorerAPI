@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "MMNoNTdrSRlFZe4pFlKPsbzb9qDVzUyLcCbGEP1v/yzE/uo3bZY7h5o8Gc1/YVxFkiRbDzUIbc9QBrLL0ce95g==",
+  "dgSpecHash": "3NRQpoATJg1Ex7FuKCRS7v3g+/Q15PRvV8vmHsuUy0bOuRrEt07aC3MrXwlBQ613D+YWb/qRfDDZfnQUtqsNtA==",
   "success": true,
-  "projectFilePath": "c:\\ProjetosProgramação\\APIs com ASP.NET\\DevExplorerAPI\\DevExplorerAPI.csproj",
+  "projectFilePath": "C:\\ProjetosProgramação\\APIs com ASP.NET\\DevExplorerAPI\\DevExplorerAPI.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\mathe\\.nuget\\packages\\azure.core\\1.35.0\\azure.core.1.35.0.nupkg.sha512",
     "C:\\Users\\mathe\\.nuget\\packages\\azure.identity\\1.10.3\\azure.identity.1.10.3.nupkg.sha512",

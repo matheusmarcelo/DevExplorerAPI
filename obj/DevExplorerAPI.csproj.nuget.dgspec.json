@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "c:\\ProjetosProgramação\\APIs com ASP.NET\\DevExplorerAPI\\DevExplorerAPI.csproj": {}
+    "C:\\ProjetosProgramação\\APIs com ASP.NET\\DevExplorerAPI\\DevExplorerAPI.csproj": {}
   },
   "projects": {
-    "c:\\ProjetosProgramação\\APIs com ASP.NET\\DevExplorerAPI\\DevExplorerAPI.csproj": {
+    "C:\\ProjetosProgramação\\APIs com ASP.NET\\DevExplorerAPI\\DevExplorerAPI.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "c:\\ProjetosProgramação\\APIs com ASP.NET\\DevExplorerAPI\\DevExplorerAPI.csproj",
+        "projectUniqueName": "C:\\ProjetosProgramação\\APIs com ASP.NET\\DevExplorerAPI\\DevExplorerAPI.csproj",
         "projectName": "DevExplorerAPI",
-        "projectPath": "c:\\ProjetosProgramação\\APIs com ASP.NET\\DevExplorerAPI\\DevExplorerAPI.csproj",
+        "projectPath": "C:\\ProjetosProgramação\\APIs com ASP.NET\\DevExplorerAPI\\DevExplorerAPI.csproj",
         "packagesPath": "C:\\Users\\mathe\\.nuget\\packages\\",
-        "outputPath": "c:\\ProjetosProgramação\\APIs com ASP.NET\\DevExplorerAPI\\obj\\",
+        "outputPath": "C:\\ProjetosProgramação\\APIs com ASP.NET\\DevExplorerAPI\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\mathe\\AppData\\Roaming\\NuGet\\NuGet.Config",
