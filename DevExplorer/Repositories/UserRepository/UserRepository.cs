@@ -101,11 +101,13 @@ namespace DevExplorerAPI.DevExplorer.Repositories.UserRepository
                     DDI = user.DDI,
                     Address = user.Address,
                     House_number = user.House_number,
-                    @Zip_code = user.Zip_code,
+                    Zip_code = user.Zip_code,
                     State = user.State,
                     City = user.City,
                     Nat = user.Nat,
                     Status_account = 'A',
+                    Date_account = user.Date_account,
+                    Date_updated_account = user.Date_updated_account
                 }
             );
 

@@ -11,6 +11,9 @@ using System.Text;
 using DevExplorerAPI.DevExplorer.Interfaces.IAuth;
 using DevExplorerAPI.DevExplorer.Services.AuthService;
 using DevExplorerAPI.DevExplorer.Repositories.AuthRepository;
+using DevExplorerAPI.DevExplorer.Interfaces.ITask;
+using DevExplorerAPI.DevExplorer.Repositories.TaskRepository;
+using DevExplorerAPI.DevExplorer.Services.TaskService;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -24,6 +27,8 @@ builder.Services.AddScoped<IUserRepository, UserRepository>();
 builder.Services.AddScoped<IUserService, UserService>();
 builder.Services.AddScoped<IAuthenticateRepository, AuthenticateRepository>();
 builder.Services.AddScoped<IAuthenticateService, AuthenticateService>();
+builder.Services.AddScoped<ITaskRepository, TaskRepository>();
+builder.Services.AddScoped<ITaskService, TaskService>();
 
 builder.Services.AddAuthentication(opt =>
     {

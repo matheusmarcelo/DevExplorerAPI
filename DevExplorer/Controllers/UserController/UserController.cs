@@ -80,7 +80,7 @@ namespace DevExplorerAPI.DevExplorer.Controllers.UserController
             }
         }
 
-        [AllowAnonymous]
+        [Authorize]
         [HttpPut, Route("update-user")]
         public async Task<IActionResult> UpdateUserAsync([FromBody] UserModel user)
         {
@@ -105,7 +105,7 @@ namespace DevExplorerAPI.DevExplorer.Controllers.UserController
             }
         }
 
-        [AllowAnonymous]
+        [Authorize]
         [HttpPut, Route("delete-user/{CPF}")]
         public async Task<IActionResult> DeleteUserAsync(string CPF)
         {

@@ -37,6 +37,7 @@ namespace DevExplorerAPI.DevExplorer.Controllers.AuthController
 
                 var userDetails = new
                 {
+                    id = userExists.Id,
                     name = userExists.Name,
                     cpf = userExists.Cpf,
                     email = userExists.Email,

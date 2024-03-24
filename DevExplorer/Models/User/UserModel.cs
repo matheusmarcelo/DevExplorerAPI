@@ -14,7 +14,7 @@ namespace DevExplorerAPI.DevExplorer.Models.User
         public string Cpf { get; set; }
         public string Email { get; set; }
         public string? Password { get; set; }
-        public DateTime BirthDay { get; set; }
+        public DateTime? BirthDay { get; set; }
         public string? CelPhone { get; set; }
         public string? DDD { get; set; }
         public string? DDI { get; set; }
